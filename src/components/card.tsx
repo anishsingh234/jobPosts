@@ -6,13 +6,14 @@ import ApplyToJob from "./applyButton";
 import DeleteJobButton from "./DeleteOpenings";
 
 export default function Card({ data, onDelete }) {
+   console.log("Card Data:", data); 
   const href = `/job-details/${data?.id}`;
 
   return (
     <div className="p-6 border border-gray-200 rounded-2xl shadow-md bg-white max-w-xl w-full mx-auto my-6 transition-transform hover:scale-[1.01] hover:shadow-lg">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold text-teal-700">{data?.title}</h2>
-        <ApplyToJob jobId={data?.id} />
+        {data?.id && <ApplyToJob jobId={data.id} />}
       </div>
 
       <div className="text-gray-700 space-y-2 text-sm">

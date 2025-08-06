@@ -1,4 +1,3 @@
-
 import prismaClient from "@/services/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import { getUserFromCookies } from "@/helper";
@@ -17,22 +16,20 @@ export async function GET(
     });
   }
 
-  const appToSave = {
-    user_id: user.id,
-    job_id: job_id,
-  };
-
   try {
     const application = await prismaClient.application.create({
-      data: appToSave,
+      data: {
+        user_id: user.id,
+        job_id: job_id,
+      },
     });
 
     return NextResponse.json({
       success: true,
       data: application,
     });
-  } catch (err:any) {
-    console.error(err.message);
+  } catch (err: any) {
+    console.error("Error applying to job:", err); 
     return NextResponse.json({
       success: false,
       message: "Failed to create application",

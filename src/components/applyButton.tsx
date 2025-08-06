@@ -3,6 +3,7 @@ import { Button } from "@radix-ui/themes";
 import { useState } from "react";
 
 export default function ApplyToJob({ jobId }: { jobId: string }) {
+  console.log(jobId);
   const [loading, setLoading] = useState(false);
   const [applied, setApplied] = useState(false);
 
@@ -11,7 +12,7 @@ export default function ApplyToJob({ jobId }: { jobId: string }) {
 
     setLoading(true);
     try {
-      const res = await fetch(`/api/apply/${jobId}`);
+      const res = await fetch(`/api/job/apply/${jobId}`);
       const data = await res.json();
 
       if (res.ok && data.success) {
