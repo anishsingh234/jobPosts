@@ -1,12 +1,23 @@
 //@ts-nocheck
+"use client";
 import Link from "next/link";
-import {Briefcase,MapPin,Layers,ExternalLink,Pencil,Trash2,} from "lucide-react";
+import {
+  Briefcase,
+  MapPin,
+  Layers,
+  ExternalLink,
+  Pencil,
+  Trash2,
+} from "lucide-react";
 import EditBtn from "./editBtn";
 import ApplyToJob from "./applyButton";
 import DeleteJobButton from "./DeleteOpenings";
-
+import { useContext } from "react";
+import { UserContext } from "@/app/(group)/layout";
+import { Openings } from "../../generated/prisma";
 export default function Card({ data, onDelete }) {
-   console.log("Card Data:", data); 
+  const { user } = useContext(UserContext);
+  console.log("Card Data:", data);
   const href = `/job-details/${data?.id}`;
 
   return (
@@ -59,8 +70,11 @@ export default function Card({ data, onDelete }) {
         </Link>
 
         <div className="flex gap-2">
-          <EditBtn item={data} />
-          <DeleteJobButton id={data?.id} />
+          <div className="flex gap-2">
+            <EditBtn item={data} />
+           
+                <DeleteJobButton id={data?.id} />
+          </div>
         </div>
       </div>
     </div>

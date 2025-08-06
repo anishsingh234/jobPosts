@@ -29,7 +29,7 @@ export async function GET(req: NextRequest, context: Context) {
   });
 }
 
-// --- DELETE Handler ---
+
 export async function DELETE(req: NextRequest, context: Context) {
   try {
     const id = context.params.id;

@@ -12,7 +12,7 @@ export default function AddJobPage() {
   const [location, setlocation] = useState("");
   const [type, settype] = useState("");
   const [Apply, setApply] = useState("");
-  const [salary, setsalary] = useState(0);
+  const [salary, setsalary] = useState<Number>();
   const [loading, setloading] = useState(false);
 
   async function handleSubmit() {
