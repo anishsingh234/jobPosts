@@ -35,10 +35,21 @@ export default function UserDropDownButton() {
                 </Link>
               </DropdownMenu.Item>
             )}
+             <DropdownMenu.Item asChild>
+                <Link href="/applied-jobs">
+                  View Your Application
+                </Link>
+              </DropdownMenu.Item>
 
             <DropdownMenu.Separator />
 
-            <DropdownMenu.Item>🗃️ Archive</DropdownMenu.Item>
+            {!user && (
+              <DropdownMenu.Item>
+                <Link href="/login">
+                    Login 
+                </Link>
+            </DropdownMenu.Item>
+            )}
           </DropdownMenu.Content>
         </DropdownMenu.Root>
       </Grid>
